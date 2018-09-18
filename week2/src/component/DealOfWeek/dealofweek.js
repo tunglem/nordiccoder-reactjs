@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
+import dealweek from './assets/images/deal_ofthe_week.png'
 
 class DealOfWeek extends Component {
   render() {
@@ -9,7 +9,7 @@ class DealOfWeek extends Component {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="deal_ofthe_week_img">
-                <img src="./assets/images/deal_ofthe_week.png" alt="" />
+                <img src={dealweek} alt="" />
               </div>
             </div>
             <div className="col-lg-6 text-right deal_ofthe_week_col">

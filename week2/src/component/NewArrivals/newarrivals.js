@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-// import './App.css';
+import product_1 from './assets/images/product_1.png'
+import product_2 from './assets/images/product_2.png'
+import product_3 from './assets/images/product_3.png'
+import product_4 from './assets/images/product_4.png'
+import product_5 from './assets/images/product_5.png'
+import product_6 from './assets/images/product_6.png'
+import product_7 from './assets/images/product_7.png'
+import product_8 from './assets/images/product_8.png'
+import product_9 from './assets/images/product_9.png'
+import product_10 from './assets/images/product_10.png'
 
 class NewArrivals extends Component {
   render() {
@@ -31,7 +40,7 @@ class NewArrivals extends Component {
                 <div className="product-item men">
                   <div className="product discount product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_1.png" alt="" />
+                      <img src={product_1} alt="" />
                     </div>
                     <div className="favorite favorite_left"></div>
                     <div className="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
@@ -45,7 +54,7 @@ class NewArrivals extends Component {
                 <div className="product-item women">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_2.png" alt="" />
+                      <img src={product_2} alt="" />
                     </div>
                     <div className="favorite"></div>
                     <div className="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
@@ -59,7 +68,7 @@ class NewArrivals extends Component {
                 <div className="product-item women">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_3.png" alt="" />
+                      <img src={product_3} alt="" />
                     </div>
                     <div className="favorite"></div>
                     <div className="product_info">
@@ -72,7 +81,7 @@ class NewArrivals extends Component {
                 <div className="product-item accessories">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_4.png" alt="" />
+                      <img src={product_4} alt="" />
                     </div>
                     <div className="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                     <div className="favorite favorite_left"></div>
@@ -86,7 +95,7 @@ class NewArrivals extends Component {
                 <div className="product-item women men">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_5.png" alt="" />
+                      <img src={product_5} alt="" />
                     </div>
                     <div className="favorite"></div>
                     <div className="product_info">
@@ -99,7 +108,7 @@ class NewArrivals extends Component {
                 <div className="product-item accessories">
                   <div className="product discount product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_6.png" alt="" />
+                      <img src={product_6} alt="" />
                     </div>
                     <div className="favorite favorite_left"></div>
                     <div className="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
@@ -113,7 +122,7 @@ class NewArrivals extends Component {
                 <div className="product-item women">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_7.png" alt="" />
+                      <img src={product_7} alt="" />
                     </div>
                     <div className="favorite"></div>
                     <div className="product_info">
@@ -126,7 +135,7 @@ class NewArrivals extends Component {
                 <div className="product-item accessories">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_8.png" alt="" />
+                      <img src={product_8} alt="" />
                     </div>
                     <div className="favorite"></div>
                     <div className="product_info">
@@ -139,7 +148,7 @@ class NewArrivals extends Component {
                 <div className="product-item men">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_9.png" alt="" />
+                      <img src={product_9} alt="" />
                     </div>
                     <div className="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                     <div className="favorite favorite_left"></div>
@@ -153,7 +162,7 @@ class NewArrivals extends Component {
                 <div className="product-item men">
                   <div className="product product_filter">
                     <div className="product_image">
-                      <img src="./assets/images/product_10.png" alt="" />
+                      <img src={product_10} alt="" />
                     </div>
                     <div className="favorite"></div>
                     <div className="product_info">

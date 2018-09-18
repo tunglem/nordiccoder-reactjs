@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import './App.css';
+import silder from './assets/images/slider_1.jpg'
 
 class HeroBanner extends Component {
   render() {
     return (
       <div>
-        <div className="main_slider" style={{ backgroundImage: 'url(./assets/images/slider_1.jpg)' }}>
+        <div className="main_slider" style={{ backgroundImage: 'url(' + silder + ')' }}>
           <div className="container fill_height">
             <div className="row align-items-center fill_height">
               <div className="col">
