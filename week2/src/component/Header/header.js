@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import './assets/css/index.css'
+
 class Header extends Component {
   render() {
     return (
-      <div>
+      <div className="test">
         <header className="header trans_300">
           <div className="top_nav">
             <div className="container">
