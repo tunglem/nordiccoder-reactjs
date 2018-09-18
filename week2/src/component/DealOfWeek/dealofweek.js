@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import dealweek from './assets/images/deal_ofthe_week.png'
+import './assets/css/index.css'
 
 class DealOfWeek extends Component {
   render() {

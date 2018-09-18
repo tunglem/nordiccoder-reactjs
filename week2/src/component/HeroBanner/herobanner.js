@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import silder from './assets/images/slider_1.jpg'
+import './assets/css/index.css'
 
 class HeroBanner extends Component {
   render() {

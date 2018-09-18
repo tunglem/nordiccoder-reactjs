@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import banner1 from './assets/images/banner_1.jpg'
 import banner2 from './assets/images/banner_2.jpg'
 import banner3 from './assets/images/banner_3.jpg'
+import './assets/css/index.css'
 
 class CategoriesBar extends Component {
   render() {
