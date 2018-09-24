@@ -1,15 +1,15 @@
 # Assignment | Week 3
 Required tasks:
 ## 1 Break new arrival components into multiple small components
-  a.Product-card
+  a. Product-card
   
-  b.Thumbnail
+  b. Thumbnail
   
-  c.Short description
+  c. Short description
   
-  d.Add-to-cart button
+  d. Add-to-cart button
   
-  e.Additional status: New, Sale off
+  e. Additional status: New, Sale off
 	
 ## 2 Filter new arrival product list by category using client filter approach
 Tips: we use filter of Array or lodash.
