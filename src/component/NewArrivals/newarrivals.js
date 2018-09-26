@@ -58,26 +58,27 @@ class NewArrivals extends Component {
          })
    }
    onFilterByCategoriesAll = () => {
-      console.log('eeeeeee');
-      fetch('http://api.demo.nordiccoder.com/api/products')
-         .then((response) => {
-            return response.json();
-         })
-         .then((data) => {
-            if (data.header.status === 200) {
-               this.setState({
-                  products: data.body,
-                  filters: data.body,
-                  isLoadingProducts: true,
-                  active: "all"
-               })
-            }
-         })
+      // console.log('eeeeeee');
+      // fetch('http://api.demo.nordiccoder.com/api/products')
+      //    .then((response) => {
+      //       return response.json();
+      //    })
+      //    .then((data) => {
+      //       if (data.header.status === 200) {
+      //          this.setState({
+      //             products: data.body,
+      //             filters: data.body,
+      //             isLoadingProducts: true,
+      //             active: "all"
+      //          })
+      //       }
+      //    })
+      console.log('asddasd')
    }
 
    _onFilterByCategories = (name = '', id = '') => {
       console.log('sdsdsds')
-      if (id != '') {
+      if (id !== '') {
          fetch('http://api.demo.nordiccoder.com/api/categories/' + id + '/products')
             .then((response) => {
                return response.json();
@@ -100,7 +101,7 @@ class NewArrivals extends Component {
       const { categories } = this.state
       let result = ''
       result = categories.map((r, i) => {
-         if (typeof r.random === 'undefined') {
+         if (i <= 2) {
             return (
                <Categories
                   key={i}
@@ -113,7 +114,6 @@ class NewArrivals extends Component {
                />
             )
          }
-
       })
       return result
    }
@@ -152,11 +152,10 @@ class NewArrivals extends Component {
                   <div className="col text-center">
                      <div className="new_arrivals_sorting">
                         <ul className="arrivals_grid_sorting clearfix button-group filters-button-group">
-                           {/* <li className={`${this.state.active == "all" ? 'active' : ''} grid_sorting_button button d-flex flex-column justify-content-center align-items-center is-checked `} onClick={(e) => this.onFilterByCategoriesAll()} data-filter="*">all</li> */}
                            <li
-                              className={`${this.state.active === 'all' ? 'active' : ''} grid_sorting_button button d-flex flex-column justify-content-center align-items-center`}
+                              className=' grid_sorting_button button d-flex flex-column justify-content-center align-items-center'
                               data-filter="*"
-                              onClick={() => this.onFilterByCategoriesAll()}
+                              onClick={this.onFilterByCategoriesAll}
                            >
                               All
                            </li>
