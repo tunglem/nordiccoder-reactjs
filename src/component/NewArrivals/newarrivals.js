@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-// import product_1 from './assets/images/product_1.png'
-// import product_2 from './assets/images/product_2.png'
-// import product_3 from './assets/images/product_3.png'
-// import product_4 from './assets/images/product_4.png'
-// import product_5 from './assets/images/product_5.png'
-// import product_6 from './assets/images/product_6.png'
-// import product_7 from './assets/images/product_7.png'
-// import product_8 from './assets/images/product_8.png'
-// import product_9 from './assets/images/product_9.png'
-// import product_10 from './assets/images/product_10.png'
 import './assets/css/index.css'
 import Products from './include/products'
 import Categories from './include/categories'
+
+const grid_sorting_button_temp = {
+   height: '40px',
+   minWidth: '102px',
+   paddingLeft: '25px',
+   paddingRight: '25px',
+   cursor: 'pointer',
+   border: 'solid 1px #ebebeb',
+   fontSize: '14px',
+   fontWeight: '500',
+   textTransform: 'uppercase',
+   background: '#FFFFFF',
+   borderRadius: '3px',
+   margin: '0',
+   float: 'left',
+   marginLeft: '- 1px',
+   color: '#FFFFFF',
+
+}
 
 class NewArrivals extends Component {
 
@@ -21,28 +30,43 @@ class NewArrivals extends Component {
          categories: [],
          products: [],
          active: 'all',
+         totalProduct: "",
          isLoadingCategories: false,
          isLoadingProducts: false
       }
       this.Progress = []
    }
 
+
    componentDidMount() {
       ///Get all product
-      fetch('http://api.demo.nordiccoder.com/api/products')
+      var linkfilter = "";
+      fetch('http://api.demo.nordiccoder.com/api/products/count')
          .then((response) => {
             return response.json();
          })
          .then((data) => {
             if (data.header.status === 200) {
+               const countProduct = data.body;
+               linkfilter = '{"limit":"' + countProduct.count + '"}';
                this.setState({
-                  products: data.body,
-                  filters: data.body,
-                  isLoadingProducts: true
+                  totalProduct: encodeURIComponent(linkfilter)
                })
+               fetch('http://api.demo.nordiccoder.com/api/products?filter=' + this.state.totalProduct)
+                  .then((response) => {
+                     return response.json();
+                  })
+                  .then((data) => {
+                     if (data.header.status === 200) {
+                        this.setState({
+                           products: data.body,
+                           filters: data.body,
+                           isLoadingProducts: true
+                        })
+                     }
+                  })
             }
          })
-
       /// Get categories
       fetch('http://api.demo.nordiccoder.com/api/categories')
          .then((response) => {
@@ -56,24 +80,6 @@ class NewArrivals extends Component {
                })
             }
          })
-   }
-   onFilterByCategoriesAll = () => {
-      // console.log('eeeeeee');
-      // fetch('http://api.demo.nordiccoder.com/api/products')
-      //    .then((response) => {
-      //       return response.json();
-      //    })
-      //    .then((data) => {
-      //       if (data.header.status === 200) {
-      //          this.setState({
-      //             products: data.body,
-      //             filters: data.body,
-      //             isLoadingProducts: true,
-      //             active: "all"
-      //          })
-      //       }
-      //    })
-      console.log('asddasd')
    }
 
    _onFilterByCategories = (name = '', id = '') => {
@@ -91,6 +97,21 @@ class NewArrivals extends Component {
                      filters: data.body,
                      isLoadingProducts: true,
                      active: name
+                  })
+               }
+            })
+      } else {
+         fetch('http://api.demo.nordiccoder.com/api/products?filter=' + this.state.totalProduct)
+            .then((response) => {
+               return response.json();
+            })
+            .then((data) => {
+               if (data.header.status === 200) {
+                  this.setState({
+                     products: data.body,
+                     filters: data.body,
+                     isLoadingProducts: true,
+                     active: "all"
                   })
                }
             })
@@ -153,9 +174,9 @@ class NewArrivals extends Component {
                      <div className="new_arrivals_sorting">
                         <ul className="arrivals_grid_sorting clearfix button-group filters-button-group">
                            <li
-                              className=' grid_sorting_button button d-flex flex-column justify-content-center align-items-center'
-                              data-filter="*"
-                              onClick={this.onFilterByCategoriesAll}
+                              className='button d-flex flex-column justify-content-center align-items-center'
+                              onClick={() => this._onFilterByCategories()}
+                              style={this.state.active === 'all' ? { ...grid_sorting_button_temp, background: 'red', color: 'white' } : { ...grid_sorting_button_temp, background: 'white', color: 'black' }}
                            >
                               All
                            </li>
@@ -168,7 +189,7 @@ class NewArrivals extends Component {
                   {this._onRenderProduct()}
                </div>
             </div>
-         </div>
+         </div >
       );
    }
 }
