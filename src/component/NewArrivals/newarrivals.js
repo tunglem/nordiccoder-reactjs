@@ -31,8 +31,6 @@ class NewArrivals extends Component {
          products: [],
          active: 'all',
          totalProduct: "",
-         isLoadingCategories: false,
-         isLoadingProducts: false
       }
       this.Progress = []
    }
@@ -61,7 +59,6 @@ class NewArrivals extends Component {
                         this.setState({
                            products: data.body,
                            filters: data.body,
-                           isLoadingProducts: true
                         })
                      }
                   })
@@ -76,7 +73,6 @@ class NewArrivals extends Component {
             if (data.header.status === 200) {
                this.setState({
                   categories: data.body,
-                  isLoadingCategories: true
                })
             }
          })
@@ -95,7 +91,6 @@ class NewArrivals extends Component {
                   this.setState({
                      products: data.body,
                      filters: data.body,
-                     isLoadingProducts: true,
                      active: name
                   })
                }
@@ -110,7 +105,6 @@ class NewArrivals extends Component {
                   this.setState({
                      products: data.body,
                      filters: data.body,
-                     isLoadingProducts: true,
                      active: "all"
                   })
                }
@@ -120,8 +114,7 @@ class NewArrivals extends Component {
 
    _onRenderCategories = () => {
       const { categories } = this.state
-      let result = ''
-      result = categories.map((r, i) => {
+      return categories.map((r, i) => {
          if (i <= 2) {
             return (
                <Categories
@@ -136,13 +129,11 @@ class NewArrivals extends Component {
             )
          }
       })
-      return result
    }
 
    _onRenderProduct = () => {
       const { products } = this.state
-      let result = ''
-      result = products.map((r, i) => {
+      return products.map((r, i) => {
          return (
             <Products
                key={i}
@@ -156,7 +147,6 @@ class NewArrivals extends Component {
             />
          )
       })
-      return result
    }
    render() {
       return (
