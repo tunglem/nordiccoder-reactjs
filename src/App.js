@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './component/Header/header'
-import HeroBanner from './component/HeroBanner/herobanner'
-import CategoriesBar from './component/CategoriesBar/categoriesbar'
-import NewArrivals from './component/NewArrivals/newarrivals'
-import DealOfWeek from './component/DealOfWeek/dealofweek'
+// import HeroBanner from './component/HeroBanner/herobanner'
+// import CategoriesBar from './component/CategoriesBar/categoriesbar'
+// import NewArrivals from './component/NewArrivals/newarrivals'
+// import DealOfWeek from './component/DealOfWeek/dealofweek'
 import ShippingBar from './component/ShippingBar/shippingbar'
 import Footer from './component/Footer/footer'
+import Categories from './component/Categories/categories'
 
 class App extends Component {
   render() {
     return (
       <div className="super_container">
         <Header />
-        <HeroBanner />
+        {/* <HeroBanner />
         <CategoriesBar />
         <NewArrivals />
-        <DealOfWeek />
+        <DealOfWeek />*/}
+        <Categories />
         <ShippingBar />
         <Footer />
       </div >
