@@ -20,12 +20,12 @@ export default class ProductCard extends Component {
           </div>
 
           <div className="favorite favorite_left"></div>
-          {isSale == true && (
+          {isSale === true && (
             <div className="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
               <span>-${sale}</span>
             </div>
           )}
-          {isSale == false && (
+          {isSale === false && (
             <div className="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
               <span>NEW</span>
             </div>
@@ -35,12 +35,12 @@ export default class ProductCard extends Component {
             <h6 className="product_name">
               <a >{product.name})</a>
             </h6>
-            <div className="product_price"> ${product.salePrice}${originalPrice}
+            <div className="product_price"> ${product.salePrice}{originalPrice}
             </div>
           </div>
         </div>
         <div className="red_button add_to_cart_button">
-          <a href="#">add to cart</a>
+          <a href="">add to cart</a>
         </div>
       </div>
     );
