@@ -33,6 +33,9 @@ class FilterByName extends Component {
       onSelectedOptionChanged(category);
     }
   }
+  Capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
 
   render() {
@@ -49,9 +52,14 @@ class FilterByName extends Component {
                 className={` ${category.id === this.state.selectedCategoryId ? 'active is-checked' : ''}}`}
                 onClick={() => this.handleItemClick(category)}
               >
-                <a style={{ "cursor": "pointer" }}><span>
-                  {category.name}
-                </span>
+                <a style={{ "cursor": "pointer" }}>
+                  <span style={{ "magrinLeft": "5px" }}>
+                    {
+                      category.id === this.state.selectedCategoryId ?
+                        <i className="fa fa-angle-double-right" aria-hidden="true" /> : ''
+                    }
+                  </span>
+                  {this.Capitalize(category.name)}
                 </a>
               </li>
             ))}

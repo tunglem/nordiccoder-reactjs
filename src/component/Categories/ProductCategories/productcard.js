@@ -26,8 +26,8 @@ export default class ProductCard extends Component {
             </div>
           )}
           {isSale == false && (
-            <div className="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
-              <span>new</span>
+            <div className="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
+              <span>NEW</span>
             </div>
           )}
 
