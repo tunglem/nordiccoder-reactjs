@@ -16,27 +16,89 @@ class Categories extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      categories: [],
+      filteredProducts: [],
+      active: 'all',
+      totalProduct: "",
+      allproduct: []
+    }
 
-    // Init mock data
     this.categories = [
       {
         id: 'all',
         name: 'all',
       },
-      ...categories
-    ];
+      ...this.state.categories
+    ]
+
+    //Get all product
+    var linkfilter = "";
+    fetch('http://api.demo.nordiccoder.com/api/products/count')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.header.status === 200) {
+          const countProduct = data.body;
+          linkfilter = '{"limit":"' + countProduct.count + '"}';
+          this.setState({
+            totalProduct: encodeURIComponent(linkfilter)
+          })
+          fetch('http://api.demo.nordiccoder.com/api/products?filter=' + this.state.totalProduct)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              if (data.header.status === 200) {
+                this.setState({
+                  filteredProducts: data.body,
+                  allproduct: data.body,
+                  filters: data.body,
+                })
+              }
+            })
+        }
+      })
+    /// Get categories
+    fetch('http://api.demo.nordiccoder.com/api/categories')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.header.status === 200) {
+          this.setState({
+            categories: data.body,
+            defaltcate: data.body[0].id,
+          })
+          // this.categories = data.body
+          // Init mock data
+          this.categories = [
+            ...this.categories,
+            ...this.state.categories
+            // ...this.sta1te.categories
+          ];
+          console.log(this.categories)
+        }
+      })
+
+
 
     // Init state
-    this.state = {
-      filteredProducts: productsList,
-    };
+    // this.state = {
+    //   filteredProducts: productsList,
+    // };
 
     this.handleSelectedCategoryChanged = this.handleSelectedCategoryChanged.bind(this);
   }
+
   handleSelectedCategoryChanged(category) {
     if (!category || !category.id) return;
+
+
+
     const filteredProducts =
-      category.id === 'all' ? productsList : _.filter(productsList, { categoryId: category.id });
+      category.id === 'all' ? this.state.allproduct : _.filter(productsList, { categoryId: category.id });
     this.setState({ filteredProducts });
   }
 
@@ -60,13 +122,13 @@ class Categories extends Component {
             <div className="sidebar">
               <FilterByName
                 categories={this.categories}
-                defaultCategoryId={this.categories[0].id}
+                defaultCategoryId={this.state.defaltcate}
                 onSelectedOptionChanged={this.handleSelectedCategoryChanged}
               />
               <FilterByPrice />
             </div>
             <div className="main_content">
-              <div className="products_iso">
+              <div className="products_isok">
                 <ProductCategories productsList={this.state.filteredProducts} />
               </div>
             </div>

@@ -9,9 +9,10 @@ class FilterByName extends Component {
 
     // Define component state
     const { categories, defaultCategoryId } = this.props;
+    console.log(categories)
     // const categories = this.props.categories;
     // const defaultCategoryId = this.props.defaultCategoryId;
-
+    console.log('a', typeof categories);
     this.state = {
       selectedCategoryId: categories.length > 0
         ? ((defaultCategoryId && categories.findIndex(x => x.id === defaultCategoryId) >= 0 && defaultCategoryId) || categories[0].id)

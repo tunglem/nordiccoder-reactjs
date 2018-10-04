@@ -16,7 +16,7 @@ class ProductCategories extends Component {
       <div className="row">
         <div className="col">
           <SortingDropdown />
-          <div className="grid-product" style={{ "display": "flex", "flexFlow": "row wrap", "paddingTop": "20px" }}>
+          <div className="grid-product" style={{ "display": "flex", "flexFlow": "row wrap", "paddingTop": "20px", "height": "auto !important", "minHeight": "100px !important" }}>
             {this.props.productsList.map(product => <ProductCard key={product.id} product={product} />)}
           </div>
           <div className="product_sorting_container product_sorting_container_bottom clearfix">
